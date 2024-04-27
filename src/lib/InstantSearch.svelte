@@ -36,9 +36,9 @@
       initialUiState,
       insights,
       numberLocale,
-      routing: routing === undefined || typeof routing === 'boolean' ? routing : {
-        ...routing,
-        router: routing.router || history({
+      routing: routing && {
+        ...(typeof routing !== 'boolean' ? routing : {}),
+        router: history({
           getLocation() {
             if (typeof window === "undefined") {
               if (serverContext) {
